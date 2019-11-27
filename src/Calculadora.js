@@ -1,4 +1,5 @@
 import React from "react";
+import TextField from "./TextField";
 
 class Calculadora extends React.Component {
   state = {
@@ -9,10 +10,6 @@ class Calculadora extends React.Component {
 
   onChangeNum = field => {
     return e => this.setState({ [field]: e.target.value });
-  };
-
-  onChangeNum2 = e => {
-    this.setState({ num2: e.target.value });
   };
 
   sumar = () => {
@@ -44,11 +41,19 @@ class Calculadora extends React.Component {
       <div>
         <div className="primer-valor">
           Primer Valor
-          <input onChange={this.onChangeNum("num1")} />
+          <TextField
+            state={this.state}
+            nombre="num1"
+            onChangeNum={this.onChangeNum}
+          />
         </div>
         <div className="segundo-valor">
           Segundo Valor
-          <input onChange={this.onChangeNum("num2")} />
+          <TextField
+            state={this.state}
+            nombre="num2"
+            onChangeNum={this.onChangeNum}
+          />
         </div>
         <div className="acciones">
           <button onClick={this.sumar}>+</button>
