@@ -8,8 +8,9 @@ class Calculadora extends React.Component {
     resultado: 0
   };
 
-  onChangeNum = field => {
-    return e => this.setState({ [field]: e.target.value });
+  onChangeNum = e => {
+    const name = e.target.name;
+    this.setState({ [name]: e.target.value });
   };
 
   sumar = () => {
@@ -44,7 +45,7 @@ class Calculadora extends React.Component {
           <TextField
             state={this.state}
             nombre="num1"
-            onChangeNum={this.onChangeNum}
+            onChange={this.onChangeNum}
           />
         </div>
         <div className="segundo-valor">
@@ -52,7 +53,7 @@ class Calculadora extends React.Component {
           <TextField
             state={this.state}
             nombre="num2"
-            onChangeNum={this.onChangeNum}
+            onChange={this.onChangeNum}
           />
         </div>
         <div className="acciones">

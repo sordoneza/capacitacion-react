@@ -1,18 +1,29 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 class TextField extends React.Component {
+  componentDidMount() {
+    // console.log("componentDidMount");
+  }
+
+  componentDidUpdate() {
+    //console.log("componentDidUpdate");
+  }
+
   render() {
-    const { state, nombre, onChangeNum } = this.props;
-    console.log(state);
-    return <input name={nombre} onChange={onChangeNum(nombre)} />;
+    let type = "text";
+  
+    if (this.props.type) {
+      type = this.props.type;
+    }
+    const {nombre, onChange, value } = this.props;
+    //console.log(state);
+
+    return (
+      <div>
+        <input type={type} name={nombre} placeholder={nombre.substr(0,1).toUpperCase() + nombre.substr(1)} onChange={onChange} value = {value} />
+      </div>
+    );
   }
 }
-
-TextField.propTypes = {
-  state: PropTypes.object,
-  nombre: PropTypes.string,
-  onChangeNum: PropTypes.function
-};
 
 export default TextField;
